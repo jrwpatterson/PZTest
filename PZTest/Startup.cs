@@ -44,7 +44,8 @@ namespace PZTest
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseHttpsRedirection();
+            // removing to save setting up certs
+            // app.UseHttpsRedirection();
 
             app.UseRouting();
 

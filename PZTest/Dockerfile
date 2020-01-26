@@ -7,7 +7,7 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build
 WORKDIR /src
-COPY ["PZTest/PZTest.csproj", "PZTest/"]
+COPY ["PZTest.csproj", "./", "PZTest/"]
 RUN dotnet restore "PZTest/PZTest.csproj"
 COPY . .
 WORKDIR "/src/PZTest"
@@ -15,6 +15,7 @@ RUN dotnet build "PZTest.csproj" -c Release -o /app/build
 
 FROM build AS publish
 RUN dotnet publish "PZTest.csproj" -c Release -o /app/publish
+
 
 FROM base AS final
 WORKDIR /app
