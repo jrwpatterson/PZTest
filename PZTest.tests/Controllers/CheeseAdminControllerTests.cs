@@ -17,14 +17,21 @@ namespace PZTest.tests.Controllers
 
     public class CheeseAdminControllerTests
     {
+        private Mock<IDataCache<CheeseModel>> cheeseCache;
+
+        private Mock<ILogger<CheeseAdminController>> mockLogger;
+        private CheeseAdminController cheeseController;
+
+        public CheeseAdminControllerTests()
+        {
+            mockLogger = new Mock<ILogger<CheeseAdminController>>();
+            cheeseCache = new Mock<IDataCache<CheeseModel>>();
+            cheeseController = new CheeseAdminController(mockLogger.Object, cheeseCache.Object);
+        }
+
         [Fact]
         public void it_should_delete_a_record()
         {
-            // arrange
-            var mockLogger = new Mock<ILogger<CheeseAdminController>>();
-            var cheeseCache = new Mock<IDataCache<CheeseModel>>();  
-            var cheeseController = new CheeseAdminController(mockLogger.Object, cheeseCache.Object);
-
             // act
             var id = Guid.NewGuid();
             cheeseController.Delete(id);
@@ -37,11 +44,6 @@ namespace PZTest.tests.Controllers
         [Fact]
         public void it_should_update_a_record()
         {
-            // arrange
-            var mockLogger = new Mock<ILogger<CheeseAdminController>>();
-            var cheeseCache = new Mock<IDataCache<CheeseModel>>();
-            var cheeseController = new CheeseAdminController(mockLogger.Object, cheeseCache.Object);
-
             // act
             var cheese = new CheeseModel("cheese model", 1M, "testURl", "blue");
             cheeseController.Put(cheese);
@@ -54,11 +56,6 @@ namespace PZTest.tests.Controllers
         [Fact]
         public void it_should_create_a_record()
         {
-            // arrange
-            var mockLogger = new Mock<ILogger<CheeseAdminController>>();
-            var cheeseCache = new Mock<IDataCache<CheeseModel>>();
-            var cheeseController = new CheeseAdminController(mockLogger.Object, cheeseCache.Object);
-
             // act
             var cheese = new CheeseModel("cheese model", 1M, "testURl", "blue");
             cheeseController.Post(cheese);

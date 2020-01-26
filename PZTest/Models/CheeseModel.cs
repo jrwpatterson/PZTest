@@ -11,9 +11,20 @@ namespace PZTest.Models
 
         public CheeseModel() { }
 
-        public CheeseModel(string name, decimal price, string url, string colour, Guid? guid)
+
+
+        public CheeseModel(string name, decimal price, string url, string colour)
         {
-            this.ID = guid ?? Guid.NewGuid();
+            this.ID = Guid.NewGuid();
+            this.Name = name;
+            this.PricePerKG = price;
+            this.PictureUrl = url;
+            this.CheeseColour = colour;
+        }
+
+        public CheeseModel(string name, decimal price, string url, string colour, Guid guid)
+        {
+            this.ID = guid;
             this.Name = name;
             this.PricePerKG = price;
             this.PictureUrl = url;

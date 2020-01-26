@@ -26,7 +26,12 @@ namespace PZTest
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+
+            // set up IOC
             services.AddSingleton<IDataCache<CheeseModel>, CheeseInMemCacheClass>();
+            services.AddTransient<IBasketModification, BasketModification>();
+            
+            // set up Swagger
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Patient Zero Cheese Service", Version = "v1" });

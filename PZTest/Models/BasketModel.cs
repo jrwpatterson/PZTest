@@ -17,7 +17,7 @@ namespace PZTest.Models
         {
             get
             {
-                return Lines?.Select(a => a.Price)?.Sum() ?? 0M;
+                return Lines?.Select(a => Math.Round(a.Price, 2, MidpointRounding.AwayFromZero))?.Sum() ?? 0M;
             }
         }
     }
