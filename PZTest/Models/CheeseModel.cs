@@ -4,25 +4,29 @@ namespace PZTest.Models
 {
     using PZTest.Interfaces;
 
-    public class CheeseModel : IGeneticDataItem
+    public class CheeseModel : CheeseModelNoID, IGeneticDataItem
     {
 
         public Guid ID { get; }
 
-        public string Name { get; set; }
-        public decimal PricePerKG { get; set; }
-        public string PictureUrl { get; set; }
-        public string CheeseColour { get; set; }
-
         public CheeseModel() { }
 
-        public CheeseModel(string _Name, decimal _Price, string _Url, string _Colour)
+        public CheeseModel(string name, decimal price, string url, string colour)
         {
-            ID = Guid.NewGuid();
-            Name = _Name;
-            PricePerKG = _Price;
-            PictureUrl = _Url;
-            CheeseColour = _Colour;
+            this.ID = Guid.NewGuid();
+            this.Name = name;
+            this.PricePerKG = price;
+            this.PictureUrl = url;
+            this.CheeseColour = colour;
+        }
+
+        public CheeseModel(CheeseModelNoID cheese)
+        {
+            this.ID = Guid.NewGuid();
+            this.Name = cheese.Name;
+            this.PricePerKG = cheese.PricePerKG;
+            this.PictureUrl = cheese.PictureUrl;
+            this.CheeseColour = cheese.CheeseColour;
         }
     }
 }

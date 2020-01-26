@@ -8,10 +8,46 @@ using PZTest.Models;
 
 namespace PZTest.Controllers
 {
+    using PZTest.Interfaces;
+
     [ApiController]
     [Route("api/[controller]")]
     public class CheeseAdminController : ControllerBase
     {
-         
+
+        private readonly ILogger<CheeseAdminController> _logger;
+
+        private readonly IDataCache<CheeseModel> _cheeseCache;
+
+        public CheeseAdminController(ILogger<CheeseAdminController> logger, IDataCache<CheeseModel> cheeseCache)
+        {
+            _logger = logger;
+            this._cheeseCache = cheeseCache;
+        }
+
+        [HttpDelete]
+        public void Delete(Guid id)
+        {
+            this._cheeseCache.Delete(id);
+        }
+
+        [HttpDelete]
+        public void Delete(CheeseModel cheese)
+        {
+            this._cheeseCache.Delete(cheese);
+        }
+
+        [HttpPut]
+        public void Put(CheeseModel cheese)
+        {
+            this._cheeseCache.Update(cheese);
+        }
+
+        [HttpPost]
+        public void Post(CheeseModelNoID cheese)
+        {
+            var newCheese = new CheeseModel(cheese);
+            this._cheeseCache.Create(newCheese);
+        }
     }
 }
