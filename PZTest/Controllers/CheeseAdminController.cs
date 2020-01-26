@@ -31,12 +31,6 @@ namespace PZTest.Controllers
             this._cheeseCache.Delete(id);
         }
 
-        [HttpDelete]
-        public void Delete(CheeseModel cheese)
-        {
-            this._cheeseCache.Delete(cheese);
-        }
-
         [HttpPut]
         public void Put(CheeseModel cheese)
         {

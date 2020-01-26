@@ -35,23 +35,6 @@ namespace PZTest.tests.Controllers
 
 
         [Fact]
-        public void it_should_delete_a_record_if_full_record_is_there()
-        {
-            // arrange
-            var mockLogger = new Mock<ILogger<CheeseAdminController>>();
-            var cheeseCache = new Mock<IDataCache<CheeseModel>>();
-            var cheeseController = new CheeseAdminController(mockLogger.Object, cheeseCache.Object);
-
-            // act
-            var cheese = new CheeseModel("cheese model", 1M, "testURl", "blue");
-            cheeseController.Delete(cheese);
-
-            // assert 
-            cheeseCache.Verify(m => m.Delete(cheese));
-        }
-
-
-        [Fact]
         public void it_should_update_a_record()
         {
             // arrange

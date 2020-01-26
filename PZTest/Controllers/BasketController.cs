@@ -7,9 +7,16 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace PZTest.Controllers
 {
+    using PZTest.Models;
+
     [Route("api/[controller]")]
     [ApiController]
     public class BasketController : ControllerBase
     {
+        [HttpPost]
+        public BasketModel UpdateBasket(UnverifiedBasket basket)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -32,7 +32,7 @@ namespace PZTest.Controllers
             return this._cheeseCache.Read();
         }
 
-        [HttpGet]
+        [HttpGet("{id}")]
         public  CheeseModel Get(Guid id)
         {
             return this._cheeseCache.Read(id);
