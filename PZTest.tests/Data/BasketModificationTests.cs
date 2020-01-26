@@ -1,15 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace PZTest.tests.Data
 {
-    using Moq;
-
     using PZTest.Data;
-    using PZTest.Interfaces;
     using PZTest.Models;
-    using PZTest.Seed_Data;
 
     using Xunit;
 

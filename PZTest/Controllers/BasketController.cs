@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 
 namespace PZTest.Controllers
 {
@@ -18,19 +13,19 @@ namespace PZTest.Controllers
     {
 
         private readonly ILogger<BasketController> _logger;
+        
+        private readonly IBasketModification _basketModification;
 
-        private readonly IDataCache<CheeseModel> _cheeseCache;
-
-        public BasketController(ILogger<BasketController> logger, IDataCache<CheeseModel> cheeseCache)
+        public BasketController(ILogger<BasketController> logger, IBasketModification basketModification)
         {
             _logger = logger;
-            this._cheeseCache = cheeseCache;
+            this._basketModification = basketModification;
         }
 
         [HttpPost]
         public BasketModel UpdateBasket(UnverifiedBasket basket)
         {
-            throw new NotImplementedException();
+            return this._basketModification.UpdateBasket(basket);
         }
     }
 }

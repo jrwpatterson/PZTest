@@ -7,8 +7,6 @@ using Microsoft.OpenApi.Models;
 
 namespace PZTest
 {
-    using System.Diagnostics.CodeAnalysis;
-
     using PZTest.Data;
     using PZTest.Interfaces;
     using PZTest.Models;

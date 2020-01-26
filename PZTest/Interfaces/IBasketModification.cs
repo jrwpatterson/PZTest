@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace PZTest.Interfaces
+﻿namespace PZTest.Interfaces
 {
     using PZTest.Models;
 
-    interface IBasketModification
+    public interface IBasketModification
     {
-        BasketModel UpdateBasket(UnverifiedBasket basket);
+       BasketModel UpdateBasket(UnverifiedBasket basket);
     }
 }

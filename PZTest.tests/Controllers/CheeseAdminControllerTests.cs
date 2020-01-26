@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace PZTest.tests.Controllers
 {
@@ -11,7 +9,6 @@ namespace PZTest.tests.Controllers
     using PZTest.Controllers;
     using PZTest.Interfaces;
     using PZTest.Models;
-    using PZTest.Seed_Data;
 
     using Xunit;
 

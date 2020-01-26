@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace PZTest.Data
 {
@@ -35,7 +33,7 @@ namespace PZTest.Data
                         line.Grams = basketLine.Grams;
                         line.Name = cheese.Name;
                         line.RowNo = basketLine.RowNo;
-                        line.Price = (basketLine.Grams * cheese.PricePerKG) / 1000;
+                        line.Price = Math.Round((basketLine.Grams * cheese.PricePerKG) / 1000, 2 ,MidpointRounding.AwayFromZero);
                         line.ProductID = cheese.ID;
 
                         newLines.Add(line);
