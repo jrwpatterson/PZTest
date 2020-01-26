@@ -18,10 +18,10 @@ namespace PZTest.Seed_Data
             List<CheeseModel> returnData = new List<CheeseModel>()
                                                {
                                                    new CheeseModel("Gorgonzola", 22.59M, "test", "blue"),
-                                                   new CheeseModel("Edam", 22.59M, "test", "red"),
-                                                   new CheeseModel("Cheddar", 22.59M, "test", "yellow"),
-                                                   new CheeseModel("Brie", 22.59M, "test", "white"),
-                                                   new CheeseModel("Pecorino Romano", 22.59M, "test", "black")
+                                                   new CheeseModel("Edam", 20.59M, "test", "red"),
+                                                   new CheeseModel("Cheddar", 14.59M, "test", "yellow"),
+                                                   new CheeseModel("Brie", 23.39M, "test", "white"),
+                                                   new CheeseModel("Pecorino Romano", 2.59M, "test", "black")
                                                };
 
             return returnData;

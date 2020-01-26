@@ -7,6 +7,12 @@ using Microsoft.OpenApi.Models;
 
 namespace PZTest
 {
+    using System.Diagnostics.CodeAnalysis;
+
+    using PZTest.Data;
+    using PZTest.Interfaces;
+    using PZTest.Models;
+
     public class Startup
     {
         public Startup(IConfiguration configuration)
@@ -19,7 +25,8 @@ namespace PZTest
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers(); 
+            services.AddControllers();
+            services.AddSingleton<IDataCache<CheeseModel>, CheeseInMemCacheClass>();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Patient Zero Cheese Service", Version = "v1" });
