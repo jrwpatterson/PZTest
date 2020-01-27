@@ -7,7 +7,9 @@ import { store, persistor } from './root-reducer'
 import { Router, Switch, Route } from 'react-router-dom'
 import { TopMenu } from './components'
 import { createBrowserHistory } from 'history'
-import { Home, Admin, Detail } from './pages'
+import Home from './pages/home'
+import Detail from './pages/detail'
+import Admin from './pages/admin'
 
 const history = createBrowserHistory()
 

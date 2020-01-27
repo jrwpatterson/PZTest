@@ -1,5 +1,5 @@
 import React from 'react'
 
-export const Detail = () => {
+export default () => {
   return <div>Detail Page</div>
 }

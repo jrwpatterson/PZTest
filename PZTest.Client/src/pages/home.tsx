@@ -1,5 +1,5 @@
 import React from 'react'
 
-export const Home = () => {
+export default () => {
   return <div>Home Page</div>
 }
