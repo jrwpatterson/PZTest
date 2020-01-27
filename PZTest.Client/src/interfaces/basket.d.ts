@@ -1,5 +1,5 @@
 export interface SendBasket {
-    ID: string
+    ID?: string
     Lines: BaseBasketLine[] 
 }
 
@@ -10,17 +10,18 @@ export interface BaseBasketLine {
 }
 
 export interface ReceivedBasket {
-    ID: string
+    ID?: string
     Lines: ReceivedBasketLine[]
-    Total: number
+    Total? : number
 }
 
 export interface ReceivedBasketLine extends BaseBasketLine {
-    Price: number
+    Price?: number
     Name: string
 }
 
 export interface AddBasketLine {
     ID: string,
-    Grams: number
+    Grams: number,
+    Name: string
 }
