@@ -1,10 +1,10 @@
 export interface BaseCheese {
-  Name: string
-  PricePerKG: number
-  PictureUrl: string
-  CheeseColour: string
+  name: string
+  pricePerKG: number
+  pictureUrl: string
+  cheeseColour: string
 }
 
 export interface Cheese extends BaseCheese {
-  ID: string
+  id: string
 }

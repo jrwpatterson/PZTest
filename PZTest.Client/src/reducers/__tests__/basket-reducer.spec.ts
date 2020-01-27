@@ -1,87 +1,115 @@
-import { basketReducer, addToBasket, basketReducerInitState } from "../basket-reducer"
-import { basketAsync, basketAdd, basketClear, basketRemove } from "../../actions"
-import { ReceivedBasket } from "../../interfaces"
+import {
+  basketReducer,
+  addToBasket,
+  basketReducerInitState,
+} from '../basket-reducer'
+import {
+  basketAsync,
+  basketAdd,
+  basketClear,
+  basketRemove,
+} from '../../actions'
+import { ReceivedBasket } from '../../interfaces'
 
-const basketLine1 = {Grams: 100, Name: 'Gorgonzola', Price: 10.15, ProductID: 'Test Product', RowNo: 0}
-const basketLine2 = {Grams: 250, Name: 'Different Cheese', Price: 20.15, ProductID: 'Test Product2', RowNo: 1}
+const basketLine1 = {
+  grams: 100,
+  name: 'Gorgonzola',
+  price: 10.15,
+  productID: 'Test Product',
+  rowNo: 0,
+}
+const basketLine2 = {
+  grams: 250,
+  name: 'Different Cheese',
+  price: 20.15,
+  productID: 'Test Product2',
+  rowNo: 1,
+}
 
 let basketReceived: ReceivedBasket
 
 describe('Basket Reducer', () => {
-    beforeEach(() => {
-        basketReceived =  {
-            ID: 'testId',
-            Lines: [
-                basketLine1,
-                basketLine2
-            ],
-            Total: 30.30
-        }
-    })
-    it('should add a basket when receiving', () => {
-        const reducer = basketReducer(basketReducerInitState, basketAsync.success(basketReceived))
-        expect(reducer.basket).toBe(basketReceived)
-    })
-    
-    it('should add to a the basket when adding', () => {
-        const newLine = {Grams: 500, Name: 'Added Cheese', ID: 'Test Product3'}
-        const newBasket = basketReducer(basketReducerInitState, basketAdd(newLine))
+  beforeEach(() => {
+    basketReceived = {
+      id: 'testId',
+      lines: [basketLine1, basketLine2],
+      total: 30.3,
+    }
+  })
+  it('should add a basket when receiving', () => {
+    const reducer = basketReducer(
+      basketReducerInitState,
+      basketAsync.success(basketReceived),
+    )
+    expect(reducer.basket).toBe(basketReceived)
+  })
 
-        expect(newBasket.basket?.Lines[0].Grams).toBe(500)
-        expect(newBasket.basket?.Lines[0].Name).toBe('Added Cheese')
-        expect(newBasket.basket?.Lines[0].ProductID).toBe('Test Product3')
-        expect(newBasket.basket?.Lines[0].RowNo).toBe(0)
-        expect(newBasket.basket?.Lines[0].Price).toBe(undefined)
-    })
-    
-    it('should remove from the a basket when removing', () => {
+  it('should add to a the basket when adding', () => {
+    const newLine = { grams: 500, name: 'Added Cheese', id: 'Test Product3' }
+    const newBasket = basketReducer(basketReducerInitState, basketAdd(newLine))
 
-        let newBasket = basketReducer({basket: basketReceived}, basketRemove('Test Product'))
-        expect(newBasket.basket?.Lines.length).toBe(1)
-        expect(newBasket.basket?.Lines[0]).toBe(basketLine2)
-        expect(newBasket.basket?.Total).toBe(undefined)
+    expect(newBasket.basket?.lines[0].grams).toBe(500)
+    expect(newBasket.basket?.lines[0].name).toBe('Added Cheese')
+    expect(newBasket.basket?.lines[0].productID).toBe('Test Product3')
+    expect(newBasket.basket?.lines[0].rowNo).toBe(0)
+    expect(newBasket.basket?.lines[0].price).toBe(undefined)
+  })
 
-        newBasket = basketReducer({basket: {...basketReceived}}, basketRemove('Test Product2'))
-        expect(newBasket.basket?.Lines.length).toBe(0)
-    })
+  it('should remove from the a basket when removing', () => {
+    let newBasket = basketReducer(
+      { basket: basketReceived },
+      basketRemove('Test Product'),
+    )
+    expect(newBasket.basket?.lines.length).toBe(1)
+    expect(newBasket.basket?.lines[0]).toBe(basketLine2)
+    expect(newBasket.basket?.total).toBe(undefined)
 
-    it('should remove from the a basket when removing - Test Product 2', () => {
+    newBasket = basketReducer(
+      { basket: { ...basketReceived } },
+      basketRemove('Test Product2'),
+    )
+    expect(newBasket.basket?.lines.length).toBe(0)
+  })
 
-        const newBasket2 = basketReducer({basket: {...basketReceived}}, basketRemove('Test Product2'))
-        expect(newBasket2.basket?.Lines.length).toBe(1)
-        expect(newBasket2.basket?.Lines[0]).toBe(basketLine1)
-        expect(newBasket2.basket?.Total).toBe(undefined)
-    })
+  it('should remove from the a basket when removing - Test Product 2', () => {
+    const newBasket2 = basketReducer(
+      { basket: { ...basketReceived } },
+      basketRemove('Test Product2'),
+    )
+    expect(newBasket2.basket?.lines.length).toBe(1)
+    expect(newBasket2.basket?.lines[0]).toBe(basketLine1)
+    expect(newBasket2.basket?.total).toBe(undefined)
+  })
 
-    it('should clear the basket when asked to clear', () => {
-        const newBasket = basketReducer({basket: basketReceived}, basketClear())
-        expect(newBasket.basket?.Lines).toEqual([])
-        expect(newBasket.basket?.ID).toBe('testId')
-        expect(newBasket.basket?.Total).toBe(0)
-    })
+  it('should clear the basket when asked to clear', () => {
+    const newBasket = basketReducer({ basket: basketReceived }, basketClear())
+    expect(newBasket.basket?.lines).toEqual([])
+    expect(newBasket.basket?.id).toBe('testId')
+    expect(newBasket.basket?.total).toBe(0)
+  })
 
-    it('addToBasket should add the line if basket is not formed', () =>{ 
-        const newLine = {Grams: 500, Name: 'Added Cheese', ID: 'Test Product3'}
-        const newBasket = addToBasket(newLine)
+  it('addToBasket should add the line if basket is not formed', () => {
+    const newLine = { grams: 500, name: 'Added Cheese', id: 'Test Product3' }
+    const newBasket = addToBasket(newLine)
 
-        expect(newBasket.Lines[0].Grams).toBe(500)
-        expect(newBasket.Lines[0].Name).toBe('Added Cheese')
-        expect(newBasket.Lines[0].ProductID).toBe('Test Product3')
-        expect(newBasket.Lines[0].RowNo).toBe(0)
-        expect(newBasket.Lines[0].Price).toBe(undefined)
-    })
+    expect(newBasket.lines[0].grams).toBe(500)
+    expect(newBasket.lines[0].name).toBe('Added Cheese')
+    expect(newBasket.lines[0].productID).toBe('Test Product3')
+    expect(newBasket.lines[0].rowNo).toBe(0)
+    expect(newBasket.lines[0].price).toBe(undefined)
+  })
 
-    it('addToBasket should add the line if basket is formed', () =>{ 
-        const newLine = {Grams: 500, Name: 'Added Cheese', ID: 'Test Product3'}
-        const newBasket = addToBasket(newLine, basketReceived)
+  it('addToBasket should add the line if basket is formed', () => {
+    const newLine = { grams: 500, name: 'Added Cheese', id: 'Test Product3' }
+    const newBasket = addToBasket(newLine, basketReceived)
 
-        expect(newBasket.Lines[0]).toBe(basketLine1)
-        expect(newBasket.Lines[1]).toBe(basketLine2)
+    expect(newBasket.lines[0]).toBe(basketLine1)
+    expect(newBasket.lines[1]).toBe(basketLine2)
 
-        expect(newBasket.Lines[2].Grams).toBe(500)
-        expect(newBasket.Lines[2].Name).toBe('A3ded Cheese')
-        expect(newBasket.Lines[2].ProductID).toBe('Test Product3')
-        expect(newBasket.Lines[2].RowNo).toBe(2)
-        expect(newBasket.Lines[2].Price).toBe(undefined)
-    })
+    expect(newBasket.lines[2].grams).toBe(500)
+    expect(newBasket.lines[2].name).toBe('Added Cheese')
+    expect(newBasket.lines[2].productID).toBe('Test Product3')
+    expect(newBasket.lines[2].rowNo).toBe(2)
+    expect(newBasket.lines[2].price).toBe(undefined)
+  })
 })

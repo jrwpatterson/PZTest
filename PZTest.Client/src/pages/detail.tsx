@@ -1,5 +1,13 @@
 import React from 'react'
+import { useParams } from 'react-router-dom'
+import { useCheeseMenu } from '../hooks'
 
+interface DetailScreenProps {
+  id: string
+}
 export default () => {
-  return <div>Detail Page</div>
+  const { id } = useParams<DetailScreenProps>()
+  const { cheeses } = useCheeseMenu()
+
+  return <div>Detail Page for {id}</div>
 }

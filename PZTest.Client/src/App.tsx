@@ -5,7 +5,7 @@ import './App.css'
 import { Provider } from 'react-redux'
 import { store, persistor } from './root-reducer'
 import { Router, Switch, Route } from 'react-router-dom'
-import { TopMenu } from './components'
+import { TopNav } from './components'
 import { createBrowserHistory } from 'history'
 import { Provider as HttpProvider } from 'use-http'
 import Home from './pages/home'
@@ -18,9 +18,9 @@ const App: React.FC = () => {
   return (
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
-        <HttpProvider url='http://localhost:5001'>
+        <HttpProvider url='http://localhost:5001/'>
           <Router history={history}>
-            <TopMenu />
+            <TopNav />
             <Switch>
               <Route exact path='/'>
                 <Home />
@@ -28,7 +28,7 @@ const App: React.FC = () => {
               <Route path='/admin'>
                 <Admin />
               </Route>
-              <Route path='/detail'>
+              <Route path='/detail/:id'>
                 <Detail />
               </Route>
             </Switch>

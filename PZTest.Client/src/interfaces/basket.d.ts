@@ -1,27 +1,27 @@
 export interface SendBasket {
-  ID?: string
-  Lines: BaseBasketLine[]
+  id?: string
+  lines: BaseBasketLine[]
 }
 
 export interface BaseBasketLine {
-  ProductID: string
-  RowNo: number
-  Grams: number
+  productID: string
+  rowNo: number
+  grams: number
 }
 
 export interface ReceivedBasket {
-  ID?: string
-  Lines: ReceivedBasketLine[]
-  Total?: number
+  id?: string
+  lines: ReceivedBasketLine[]
+  total?: number
 }
 
 export interface ReceivedBasketLine extends BaseBasketLine {
-  Price?: number
-  Name: string
+  price?: number
+  name: string
 }
 
 export interface AddBasketLine {
-  ID: string
-  Grams: number
-  Name: string
+  id: string
+  grams: number
+  name: string
 }

@@ -1,0 +1,169 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`cheese-menu should match its snapshot 1`] = `
+<div>
+  <div
+    class="makeStyles-root-1"
+    data-testid="cheese.menu.root"
+  >
+    <ul
+      class="MuiGridList-root makeStyles-gridList-2"
+      style="margin: -2px;"
+    >
+      <li
+        class="MuiGridListTile-root"
+        style="width: 150%; height: auto; padding: 2px;"
+      >
+        <div
+          class="MuiGridListTile-tile"
+        >
+          <div
+            class="MuiListSubheader-root MuiListSubheader-sticky MuiListSubheader-gutters"
+            data-testid="cheese.menu.header"
+          >
+            Cheeses
+          </div>
+        </div>
+      </li>
+      <li
+        class="MuiGridListTile-root"
+        style="width: 50%; height: 184px; padding: 2px;"
+      >
+        <div
+          class="MuiGridListTile-tile"
+        >
+          <a
+            href="/detail/testid"
+          >
+            <img
+              alt="testCheese"
+              src="testUrl"
+            />
+            <div
+              class="MuiGridListTileBar-root MuiGridListTileBar-titlePositionBottom MuiGridListTileBar-rootSubtitle"
+              data-testid="cheese.menu.tile"
+            >
+              <div
+                class="MuiGridListTileBar-titleWrap MuiGridListTileBar-titleWrapActionPosRight"
+              >
+                <div
+                  class="MuiGridListTileBar-title"
+                >
+                  testCheese
+                </div>
+                <div
+                  class="MuiGridListTileBar-subtitle"
+                >
+                  <span>
+                    Price/Kg $
+                    10
+                  </span>
+                </div>
+              </div>
+              <div
+                class="MuiGridListTileBar-actionIcon"
+              >
+                <button
+                  aria-label="info about testCheese"
+                  class="MuiButtonBase-root MuiIconButton-root"
+                  style="color: purple;"
+                  tabindex="0"
+                  type="button"
+                >
+                  <span
+                    class="MuiIconButton-label"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="MuiSvgIcon-root"
+                      focusable="false"
+                      role="presentation"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"
+                      />
+                    </svg>
+                  </span>
+                  <span
+                    class="MuiTouchRipple-root"
+                  />
+                </button>
+              </div>
+            </div>
+          </a>
+        </div>
+      </li>
+      <li
+        class="MuiGridListTile-root"
+        style="width: 50%; height: 184px; padding: 2px;"
+      >
+        <div
+          class="MuiGridListTile-tile"
+        >
+          <a
+            href="/detail/testid2"
+          >
+            <img
+              alt="testPinkCheese"
+              src="testPinkUrl"
+            />
+            <div
+              class="MuiGridListTileBar-root MuiGridListTileBar-titlePositionBottom MuiGridListTileBar-rootSubtitle"
+              data-testid="cheese.menu.tile"
+            >
+              <div
+                class="MuiGridListTileBar-titleWrap MuiGridListTileBar-titleWrapActionPosRight"
+              >
+                <div
+                  class="MuiGridListTileBar-title"
+                >
+                  testPinkCheese
+                </div>
+                <div
+                  class="MuiGridListTileBar-subtitle"
+                >
+                  <span>
+                    Price/Kg $
+                    15
+                  </span>
+                </div>
+              </div>
+              <div
+                class="MuiGridListTileBar-actionIcon"
+              >
+                <button
+                  aria-label="info about testPinkCheese"
+                  class="MuiButtonBase-root MuiIconButton-root"
+                  style="color: pink;"
+                  tabindex="0"
+                  type="button"
+                >
+                  <span
+                    class="MuiIconButton-label"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="MuiSvgIcon-root"
+                      focusable="false"
+                      role="presentation"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"
+                      />
+                    </svg>
+                  </span>
+                  <span
+                    class="MuiTouchRipple-root"
+                  />
+                </button>
+              </div>
+            </div>
+          </a>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+`;

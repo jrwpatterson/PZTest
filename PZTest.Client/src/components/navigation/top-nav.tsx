@@ -25,9 +25,9 @@ const useStyles = makeStyles({
   },
 })
 
-interface TopMenuProps {}
+interface TopNavProps {}
 
-export const TopMenu = (props: TopMenuProps) => {
+export const TopNav = (props: TopNavProps) => {
   const classes = useStyles()
   return (
     <div>
@@ -38,9 +38,6 @@ export const TopMenu = (props: TopMenuProps) => {
           </li>
           <li className={classes.navLink}>
             <Link to='/admin'>Admin</Link>
-          </li>
-          <li className={classes.navLink}>
-            <Link to='/detail'>Detail</Link>
           </li>
         </ul>
       </nav>

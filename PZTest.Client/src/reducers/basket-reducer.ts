@@ -15,7 +15,7 @@ interface BasketReducer {
 
 export const basketReducerInitState: BasketReducer = {
   basket: {
-    Lines: [],
+    lines: [],
   },
 }
 
@@ -37,7 +37,7 @@ export const basketReducer: Reducer<BasketReducer, RootActions> = (
       return { ...state, basket: newBasket }
     }
     case getType(basketClear): {
-      return { ...state, basket: { ...state.basket, Total: 0, Lines: [] } }
+      return { ...state, basket: { ...state.basket, total: 0, lines: [] } }
     }
     default: {
       return state
@@ -49,9 +49,9 @@ export const removeFromBasket = (
   removeID: string,
   basket?: ReceivedBasket,
 ): ReceivedBasket => {
-  _.remove(basket?.Lines ?? [], line => line.ProductID === removeID)
+  _.remove(basket?.lines ?? [], line => line.productID === removeID)
 
-  return { ...basket!, Lines: basket!.Lines, Total: undefined }
+  return { ...basket!, lines: basket!.lines, total: undefined }
 }
 
 export const addToBasket = (
@@ -59,15 +59,15 @@ export const addToBasket = (
   basket?: ReceivedBasket,
 ): ReceivedBasket => {
   const basketLine: ReceivedBasketLine = {
-    RowNo: basket?.Lines?.length ?? 0,
-    Grams: newBasketLine.Grams,
-    Name: newBasketLine.Name,
-    ProductID: newBasketLine.ID,
+    rowNo: basket?.lines?.length ?? 0,
+    grams: newBasketLine.grams,
+    name: newBasketLine.name,
+    productID: newBasketLine.id,
   }
 
   if (!basket) {
-    return { Lines: [basketLine], Total: undefined }
+    return { lines: [basketLine], total: undefined }
   } else {
-    return { ...basket, Lines: [...basket.Lines, basketLine], Total: undefined }
+    return { ...basket, lines: [...basket.lines, basketLine], total: undefined }
   }
 }

@@ -10,6 +10,7 @@ export type RootReducer = ReturnType<typeof rootReducer>
 const persistConfig = {
   key: 'root',
   storage,
+  blacklist: ['cheeseReducer'],
 }
 
 const persistedReducer = persistReducer(persistConfig, rootReducer as any)

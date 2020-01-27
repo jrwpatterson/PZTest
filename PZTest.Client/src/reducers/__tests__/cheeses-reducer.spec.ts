@@ -3,18 +3,18 @@ import { cheeseReadAll, cheeseClear } from '../../actions'
 import { Cheese } from '../../interfaces'
 
 const cheese1: Cheese = {
-  CheeseColour: 'blue',
-  ID: 'testid',
-  Name: 'blue cheese',
-  PictureUrl: 'test url',
-  PricePerKG: 20,
+  cheeseColour: 'blue',
+  id: 'testid',
+  name: 'blue cheese',
+  pictureUrl: 'test url',
+  pricePerKG: 20,
 }
 const cheese2: Cheese = {
-  CheeseColour: 'purple',
-  ID: 'testid2',
-  Name: 'dodgy cheese',
-  PictureUrl: 'test url2',
-  PricePerKG: 10,
+  cheeseColour: 'purple',
+  id: 'testid2',
+  name: 'dodgy cheese',
+  pictureUrl: 'test url2',
+  pricePerKG: 10,
 }
 
 const cheeses = [cheese1, cheese2]
