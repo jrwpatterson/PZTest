@@ -1,12 +1,46 @@
 import React from 'react'
+import { renderReduxConnectedComponent } from '../../utilites/test-wrappers'
+import Detail from '../detail'
+import { defaultMockStore } from '../../utilites/mock-store-data'
+import { Route } from 'react-router-dom'
 
 describe('details screen', () => {
   it('should match its snapshot', () => {
-    throw new Error('not implemented')
+    const { container } = renderReduxConnectedComponent(
+      <Route path='/detail/:id'>
+        <Detail />
+      </Route>,
+      undefined,
+      ['/detail/testid2'],
+    )
+    expect(container).toMatchSnapshot()
+  })
+
+  it('should show an invalid product message if no product', () => {
+    const { queryByText } = renderReduxConnectedComponent(
+      <Route path='/detail/:id'>
+        <Detail />
+      </Route>,
+      {
+        ...defaultMockStore,
+        cheeseReducer: {
+          cheeses: [
+            {
+              name: 'nothing',
+              pricePerKG: 1,
+              pictureUrl: 't',
+              cheeseColour: 'noo',
+              id: 'nothing',
+            },
+          ],
+        },
+      },
+    )
+    expect(queryByText('Invalid Product')).toBeDefined()
   })
 
   it('should show the details of the product', () => {
-    throw new Error('not implemented')
+    const { getByText } = renderReduxConnectedComponent(<Detail />)
   })
 
   it('should have a slider that calculates the estimated price for basket', () => {

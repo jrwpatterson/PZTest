@@ -1,0 +1,104 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`details screen should match its snapshot 1`] = `
+<div>
+  <div
+    class="makeStyles-root-1"
+  >
+    <h1>
+      testPinkCheese
+    </h1>
+    <div
+      class="makeStyles-outerContainer-2"
+    >
+      <div
+        class="makeStyles-detailsContainer-3"
+      >
+        <img
+          alt="testPinkCheese"
+          class="makeStyles-image-4"
+          src="testPinkUrl"
+        />
+        <div>
+          <span>
+            Colour - 
+          </span>
+          <span>
+            pink
+          </span>
+        </div>
+        <div>
+          <span>
+            Price per kg - 
+          </span>
+          <span>
+            15
+          </span>
+        </div>
+        <div
+          class="makeStyles-addToBasketBox-5"
+        >
+          <p
+            class="MuiTypography-root MuiTypography-body1 MuiTypography-gutterBottom"
+            id="discrete-slider-small-steps"
+          >
+            Add to basket
+          </p>
+          <span
+            class="MuiSlider-root MuiSlider-colorPrimary"
+          >
+            <span
+              class="MuiSlider-rail"
+            />
+            <span
+              class="MuiSlider-track"
+              style="left: 0%;"
+            />
+            <input
+              type="hidden"
+              value="5e-8"
+            />
+            <span
+              aria-labelledby="discrete-slider-small-steps"
+              aria-orientation="horizontal"
+              aria-valuemax="2000"
+              aria-valuemin="0"
+              aria-valuenow="5e-8"
+              class="MuiSlider-thumb MuiSlider-thumbColorPrimary PrivateValueLabel-thumb-56"
+              data-index="0"
+              role="slider"
+              tabindex="0"
+            >
+              <span
+                class="PrivateValueLabel-offset-58 MuiSlider-valueLabel"
+              >
+                <span
+                  class="PrivateValueLabel-circle-59"
+                >
+                  <span
+                    class="PrivateValueLabel-label-60"
+                  >
+                    5e-8
+                  </span>
+                </span>
+              </span>
+            </span>
+          </span>
+          <button
+            class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary"
+            tabindex="0"
+            type="button"
+          >
+            <span
+              class="MuiButton-label"
+            />
+            <span
+              class="MuiTouchRipple-root"
+            />
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

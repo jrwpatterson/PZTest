@@ -106,6 +106,6 @@ describe('useCheeseMenu hook', () => {
     await act(async () => await result.current.getMenu())
 
     const item = result.current.getMenuItem('fake test id')
-    expect(item).toBeNull()
+    expect(item).toBeUndefined()
   })
 })

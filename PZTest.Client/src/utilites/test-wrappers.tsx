@@ -38,13 +38,14 @@ export const createMockProviderWithStore = (
 export const renderReduxConnectedComponent = (
   children: ReactType | JSX.Element,
   storeOverride: RootReducer = defaultMockStore,
+  initialEntries?: string[],
 ) => {
   const storeData = storeOverride || defaultMockStore
   // const mount = createMount()
   const store = createStore(storeData)
   const Wrapper = createMockProviderWithStore(store)
   const element = (
-    <MemoryRouter>
+    <MemoryRouter initialEntries={initialEntries}>
       <Wrapper>{children}</Wrapper>
     </MemoryRouter>
   )
