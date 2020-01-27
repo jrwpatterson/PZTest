@@ -1,6 +1,8 @@
 import React from 'react'
 import { Basket } from '../basket'
 import { renderReduxConnectedComponent } from '../../../utilites/test-wrappers'
+import userEvent from '@testing-library/user-event'
+import { basketClear } from '../../../actions'
 
 describe('basket', () => {
   it('should match its snapshot', () => {
@@ -9,18 +11,18 @@ describe('basket', () => {
   })
 
   it('should show the basket total', () => {
-    const { container } = renderReduxConnectedComponent(<Basket />)
+    const { getByText } = renderReduxConnectedComponent(<Basket />)
+    expect(getByText('$25')).toBeDefined()
   })
 
   it('should show the lines', () => {
-    throw new Error('not implemented')
+    const { getAllByText } = renderReduxConnectedComponent(<Basket />)
+    expect(getAllByText('-').length).toBe(3)
   })
 
   it('should have a clear button that clears all', () => {
-    throw new Error('not implemented')
-  })
-
-  it('it should have a remove line for each line', () => {
-    throw new Error('not implemented')
+    const { getByText, store } = renderReduxConnectedComponent(<Basket />)
+    userEvent.click(getByText('Clear Basket'))
+    expect(store.getActions()).toEqual([basketClear()])
   })
 })
