@@ -1,0 +1,13 @@
+# stage: 1
+FROM node:10 as react-build
+WORKDIR /app
+COPY . ./
+RUN yarn
+RUN yarn build
+RUN dir
+
+# stage: 2 — the production environment
+FROM node:10
+COPY — from=react-build /app/build /usr/share/nginx/html/
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
