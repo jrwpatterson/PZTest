@@ -4,6 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using Microsoft.AspNetCore.Cors;
 
 namespace PZTest
 {
@@ -24,6 +25,7 @@ namespace PZTest
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddCors(a => a.AddPolicy("Everywhere", policy => policy.AllowAnyOrigin()));
 
             // set up IOC
             services.AddSingleton<IDataCache<CheeseModel>, CheeseInMemCacheClass>();
@@ -46,7 +48,7 @@ namespace PZTest
 
             // removing to save setting up certs
             // app.UseHttpsRedirection();
-
+            app.UseCors("Everywhere");
             app.UseRouting();
 
             app.UseAuthorization();

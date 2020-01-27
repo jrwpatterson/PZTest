@@ -1,2 +1,2 @@
 export * from './basket'
-export * from './menu'
+export * from './navigation'

@@ -1,6 +1,6 @@
 import { RootActions } from '../root-actions'
 import { getType } from 'typesafe-actions'
-import { cheeseReadAllActions } from '../actions'
+import { cheeseReadAll, cheeseClear } from '../actions'
 import { Cheese } from '../interfaces'
 
 interface CheeseReducer {
@@ -14,8 +14,11 @@ export const cheeseReducer = (
   action: RootActions,
 ) => {
   switch (action.type) {
-    case getType(cheeseReadAllActions.success): {
+    case getType(cheeseReadAll): {
       return { ...state, cheeses: action.payload }
+    }
+    case getType(cheeseClear): {
+      return { ...state, cheeses: undefined }
     }
     default: {
       return state
