@@ -1,6 +1,12 @@
 export interface SendBasket {
-  id?: string
-  lines: BaseBasketLine[]
+  ID?: string
+  Lines: BaseBasketLine[]
+}
+
+export interface SendBasketLine {
+  ProductID: string
+  RowNo: number
+  Grams: number
 }
 
 export interface BaseBasketLine {

@@ -19,8 +19,10 @@ namespace PZTest.Data
         {
             var newBasket = new BasketModel();
 
-            if(newBasket.ID == new Guid()){
+            if(basket.ID == Guid.Empty){
                 newBasket.ID = Guid.NewGuid();
+            } else {
+                newBasket.ID = basket.ID;
             }
 
             var newLines = new List<VerifiedBasketLine>();

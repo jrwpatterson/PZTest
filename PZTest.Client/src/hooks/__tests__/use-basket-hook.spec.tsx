@@ -1,5 +1,10 @@
 import { ReceivedBasket } from '../../interfaces'
-import { addToBasket } from '../use-basket-hook'
+import 'jest-fetch-mock'
+import { addToBasket, useBasketHook } from '../use-basket-hook'
+import { renderReduxConnectedHook } from '../../utilites/test-wrappers'
+import { defaultMockStore } from '../../utilites/mock-store-data'
+import { act } from '@testing-library/react-hooks'
+import { basketAsync } from '../../actions'
 
 const basketLine1 = {
   grams: 100,
@@ -26,16 +31,42 @@ describe('use basket hook', () => {
       total: 30.3,
     }
   })
-  it('should return a basket if there is one in memory', () => {
-    throw new Error('not implemented')
+
+  afterEach(() => {
+    fetchMock.resetMocks()
   })
 
-  it('should ask for a new basket if the basket is in an invalid state', () => {
-    throw new Error('not implemented')
+  it('should return a basket if there is one in memory', () => {
+    const { result } = renderReduxConnectedHook(() => useBasketHook())
+    expect(result.current.basket).toEqual(defaultMockStore.basketReducer.basket)
   })
 
   it('should remove lines from the basket', () => {
-    throw new Error('not implemented')
+    const { result, store } = renderReduxConnectedHook(() => useBasketHook())
+    act(() => result.current.removeProductFromBasket('testProdID'))
+
+    expect(store.getActions()).toEqual([
+      basketAsync({
+        basket: {
+          ...defaultMockStore.basketReducer.basket,
+          lines: [...defaultMockStore.basketReducer.basket.lines],
+          total: undefined,
+        },
+        valid: false,
+      }),
+    ])
+  })
+
+  it('should block if 0 grams', () => {
+    const { result } = renderReduxConnectedHook(() => useBasketHook())
+    act(() =>
+      result.current.addProductToBasket({
+        grams: 0,
+        id: 'testProdID',
+        name: 'test',
+      }),
+    )
+    expect(result.current.basket.total).toEqual(25)
   })
 
   it('addToBasket should add the line if basket is not formed', () => {

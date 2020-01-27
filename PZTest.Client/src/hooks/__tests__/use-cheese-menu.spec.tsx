@@ -85,9 +85,9 @@ describe('useCheeseMenu hook', () => {
     expect(store.getActions()).toEqual([cheeseReadAll([mockCheese])])
   })
 
-  it('should clear the cheese menu when asked to', () => {
+  it('should clear the cheese menu when asked to', async () => {
     const { result, store } = renderReduxConnectedHook(() => useCheeseMenu())
-    act(async () => result.current.clearMenu())
+    await act(async () => result.current.clearMenu())
     expect(store.getActions()).toEqual([cheeseClear()])
   })
 

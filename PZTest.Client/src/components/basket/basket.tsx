@@ -18,12 +18,12 @@ export const Basket = (props: BasketProps) => {
           <ListItemText primary='Basket' />
         </ListItem>
         <Divider />
-        {basket.lines.map(line => {
+        {basket.lines?.map(line => {
           return (
             <ListItem key={`${(line.productID, line.rowNo)}`}>
               <ListItemText primary={line.name} />
               <ListItemText primary=' - ' />
-              <ListItemText primary={`$${line.price}`} />
+              <ListItemText primary={`$${line.price ?? 0}`} />
             </ListItem>
           )
         })}
@@ -33,7 +33,7 @@ export const Basket = (props: BasketProps) => {
           <ListItemText primary=' - ' />
           <ListItemText
             data-testid='basket.total'
-            primary={`$${basket.total}`}
+            primary={`$${basket.total ?? 0}`}
           />
         </ListItem>
 

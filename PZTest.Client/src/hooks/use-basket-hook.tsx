@@ -27,9 +27,15 @@ export const useBasketHook = () => {
 
   const getBasket = async (force: boolean = false) => {
     if (!loading && (!basket || force || !validBasket)) {
+      console.log('test')
       setLoading(true)
       const newBasket = await request.post('api/Basket', {
-        basket,
+        id: basket?.id,
+        lines: basket?.lines?.map(line => ({
+          productID: line.productID,
+          rowNo: line.rowNo,
+          grams: line.grams,
+        })),
       })
       setLoading(false)
       if (response.ok) {

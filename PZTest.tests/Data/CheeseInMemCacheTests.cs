@@ -17,7 +17,7 @@ namespace PZTest.tests
             Assert.Equal(5, cheeseMemory.Read().Length);
             Assert.Equal("blue", cheeseMemory.Read()[0].CheeseColour);
             Assert.Equal("Gorgonzola", cheeseMemory.Read()[0].Name);
-            Assert.Equal("test", cheeseMemory.Read()[0].PictureUrl);
+            Assert.Equal("https://cheese.com/media/img/cheese/Gorgonzola_niUHULx.jpg", cheeseMemory.Read()[0].PictureUrl);
             Assert.Equal(22.59M, cheeseMemory.Read()[0].PricePerKG);
         }
 
@@ -35,7 +35,7 @@ namespace PZTest.tests
             // assert
             Assert.Equal("blue", pieceOfCheese.CheeseColour);
             Assert.Equal("Gorgonzola", pieceOfCheese.Name);
-            Assert.Equal("test", pieceOfCheese.PictureUrl);
+            Assert.Equal("https://cheese.com/media/img/cheese/Gorgonzola_niUHULx.jpg", pieceOfCheese.PictureUrl);
             Assert.Equal(22.59M, pieceOfCheese.PricePerKG);
         }
 
@@ -96,7 +96,7 @@ namespace PZTest.tests
             var cheeseMemory = new CheeseInMemCacheClass();
             Assert.Equal("yellow", cheeseMemory.Read()[2].CheeseColour);
             Assert.Equal("Cheddar", cheeseMemory.Read()[2].Name);
-            Assert.Equal("test", cheeseMemory.Read()[2].PictureUrl);
+            Assert.Equal("https://cheese.com/media/img/cheese/wiki/cheddar.jpg", cheeseMemory.Read()[2].PictureUrl);
             Assert.Equal(14.59M, cheeseMemory.Read()[2].PricePerKG);
 
 
@@ -109,7 +109,7 @@ namespace PZTest.tests
             Assert.Equal(5, cheeseMemory.Read().Length);
             Assert.Equal("yellow", cheeseMemory.Read()[2].CheeseColour);
             Assert.Equal("test name", cheeseMemory.Read()[2].Name);
-            Assert.Equal("test", cheeseMemory.Read()[2].PictureUrl);
+            Assert.Equal("https://cheese.com/media/img/cheese/wiki/cheddar.jpg", cheeseMemory.Read()[2].PictureUrl);
             Assert.Equal(14.59M, cheeseMemory.Read()[2].PricePerKG);
         }
     }

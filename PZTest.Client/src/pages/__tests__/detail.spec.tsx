@@ -1,6 +1,6 @@
 import React from 'react'
 import { renderReduxConnectedComponent } from '../../utilites/test-wrappers'
-import Detail from '../detail'
+import Detail, { calculatePrice } from '../detail'
 import { defaultMockStore } from '../../utilites/mock-store-data'
 import { Route } from 'react-router-dom'
 
@@ -53,7 +53,7 @@ describe('details screen', () => {
   })
 
   it('should calculate the price correctly', () => {
-    throw new Error('not implemented')
+    expect(calculatePrice(600, 10)).toBe(6)
   })
 
   it('should have a slider that calculates the estimated price for basket', () => {

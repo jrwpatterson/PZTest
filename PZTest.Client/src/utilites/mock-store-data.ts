@@ -20,6 +20,7 @@ export const defaultMockStore: RootReducer = {
           price: 20,
         },
       ],
+      total: 25,
     },
     validBasket: true,
   },
