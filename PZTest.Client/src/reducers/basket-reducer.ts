@@ -3,16 +3,19 @@ import {  getType  } from 'typesafe-actions'
 import {basketAsync, basketAdd, basketRemove, basketClear} from '../actions'
 import { ReceivedBasket, AddBasketLine, ReceivedBasketLine } from '../interfaces'
 import _ from 'lodash'
+import { Reducer } from 'redux'
 
 interface BasketReducer { 
-    basket?: ReceivedBasket
+    basket: ReceivedBasket
 }
 
-const initState: BasketReducer = {
-
+export const basketReducerInitState: BasketReducer = {
+    basket: {
+        Lines: []
+    }
 }
 
-export const basketReducer = (state: BasketReducer = initState, action: RootActions) => {
+export const basketReducer: Reducer<BasketReducer, RootActions> = (state: BasketReducer = basketReducerInitState, action: RootActions) => {
     switch(action.type){
         case getType(basketAsync.success): {
             const newState = {...state, basket: action.payload}

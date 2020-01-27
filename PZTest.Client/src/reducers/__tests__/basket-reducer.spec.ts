@@ -1,4 +1,4 @@
-import { basketReducer, addToBasket } from "../basket-reducer"
+import { basketReducer, addToBasket, basketReducerInitState } from "../basket-reducer"
 import { basketAsync, basketAdd, basketClear, basketRemove } from "../../actions"
 import { ReceivedBasket } from "../../interfaces"
 
@@ -19,13 +19,13 @@ describe('Basket Reducer', () => {
         }
     })
     it('should add a basket when receiving', () => {
-        const reducer = basketReducer({}, basketAsync.success(basketReceived))
+        const reducer = basketReducer(basketReducerInitState, basketAsync.success(basketReceived))
         expect(reducer.basket).toBe(basketReceived)
     })
     
     it('should add to a the basket when adding', () => {
         const newLine = {Grams: 500, Name: 'Added Cheese', ID: 'Test Product3'}
-        const newBasket = basketReducer({}, basketAdd(newLine))
+        const newBasket = basketReducer(basketReducerInitState, basketAdd(newLine))
 
         expect(newBasket.basket?.Lines[0].Grams).toBe(500)
         expect(newBasket.basket?.Lines[0].Name).toBe('Added Cheese')
@@ -78,10 +78,10 @@ describe('Basket Reducer', () => {
         expect(newBasket.Lines[0]).toBe(basketLine1)
         expect(newBasket.Lines[1]).toBe(basketLine2)
 
-        expect(newBasket.Lines[3].Grams).toBe(500)
-        expect(newBasket.Lines[3].Name).toBe('A3ded Cheese')
-        expect(newBasket.Lines[3].ProductID).toBe('Test Product3')
-        expect(newBasket.Lines[3].RowNo).toBe(3)
-        expect(newBasket.Lines[3].Price).toBe(undefined)
+        expect(newBasket.Lines[2].Grams).toBe(500)
+        expect(newBasket.Lines[2].Name).toBe('A3ded Cheese')
+        expect(newBasket.Lines[2].ProductID).toBe('Test Product3')
+        expect(newBasket.Lines[2].RowNo).toBe(2)
+        expect(newBasket.Lines[2].Price).toBe(undefined)
     })
 })
