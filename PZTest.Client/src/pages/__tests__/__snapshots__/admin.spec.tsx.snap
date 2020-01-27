@@ -1,0 +1,201 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`admin screen should match its snapshot 1`] = `
+<div>
+  <div
+    class="makeStyles-base-1"
+  >
+    <div>
+      Admin Page
+    </div>
+    <div
+      class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-1"
+    >
+      <div
+        class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12"
+      >
+        <div
+          class="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
+        >
+          Cheese Admin Table
+        </div>
+      </div>
+      <div
+        class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12"
+      >
+        <button
+          class="MuiButtonBase-root MuiButton-root MuiButton-contained"
+          tabindex="0"
+          type="button"
+        >
+          <span
+            class="MuiButton-label"
+          >
+            Add New Cheese
+          </span>
+          <span
+            class="MuiTouchRipple-root"
+          />
+        </button>
+      </div>
+      <div
+        class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-2"
+      >
+        <div
+          class="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
+        >
+          Name
+        </div>
+      </div>
+      <div
+        class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-1"
+      >
+        <div
+          class="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
+        >
+          Price/Kg
+        </div>
+      </div>
+      <div
+        class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6"
+      >
+        <div
+          class="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
+        >
+          Url
+        </div>
+      </div>
+      <div
+        class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-1"
+      >
+        <div
+          class="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
+        >
+          Colour
+        </div>
+      </div>
+      <div
+        class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-2"
+      >
+        <div
+          class="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
+        >
+          Menu
+        </div>
+      </div>
+      <div
+        class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-2"
+      >
+        <div
+          class="MuiPaper-root makeStyles-gridItem-2 MuiPaper-elevation1 MuiPaper-rounded"
+        >
+          testCheese
+        </div>
+      </div>
+      <div
+        class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-1"
+      >
+        <div
+          class="MuiPaper-root makeStyles-gridItem-2 MuiPaper-elevation1 MuiPaper-rounded"
+        >
+          10
+        </div>
+      </div>
+      <div
+        class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6"
+      >
+        <div
+          class="MuiPaper-root makeStyles-gridItem-2 MuiPaper-elevation1 MuiPaper-rounded"
+        >
+          testUrl
+        </div>
+      </div>
+      <div
+        class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-1"
+      >
+        <div
+          class="MuiPaper-root makeStyles-gridItem-2 MuiPaper-elevation1 MuiPaper-rounded"
+        >
+          purple
+        </div>
+      </div>
+      <div
+        class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-2"
+      >
+        <button
+          aria-controls="simple-menu"
+          aria-haspopup="true"
+          class="MuiButtonBase-root MuiButton-root MuiButton-text makeStyles-gridItem-2"
+          tabindex="0"
+          type="button"
+        >
+          <span
+            class="MuiButton-label"
+          >
+            Open Menu
+          </span>
+          <span
+            class="MuiTouchRipple-root"
+          />
+        </button>
+      </div>
+      <div
+        class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-2"
+      >
+        <div
+          class="MuiPaper-root makeStyles-gridItem-2 MuiPaper-elevation1 MuiPaper-rounded"
+        >
+          testPinkCheese
+        </div>
+      </div>
+      <div
+        class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-1"
+      >
+        <div
+          class="MuiPaper-root makeStyles-gridItem-2 MuiPaper-elevation1 MuiPaper-rounded"
+        >
+          15
+        </div>
+      </div>
+      <div
+        class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6"
+      >
+        <div
+          class="MuiPaper-root makeStyles-gridItem-2 MuiPaper-elevation1 MuiPaper-rounded"
+        >
+          testPinkUrl
+        </div>
+      </div>
+      <div
+        class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-1"
+      >
+        <div
+          class="MuiPaper-root makeStyles-gridItem-2 MuiPaper-elevation1 MuiPaper-rounded"
+        >
+          pink
+        </div>
+      </div>
+      <div
+        class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-2"
+      >
+        <button
+          aria-controls="simple-menu"
+          aria-haspopup="true"
+          class="MuiButtonBase-root MuiButton-root MuiButton-text makeStyles-gridItem-2"
+          tabindex="0"
+          type="button"
+        >
+          <span
+            class="MuiButton-label"
+          >
+            Open Menu
+          </span>
+          <span
+            class="MuiTouchRipple-root"
+          />
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
