@@ -1,3 +1,4 @@
 {
-    "jestrunner.jestCommand": "yarn test --watchAll=false"
+    "jestrunner.jestCommand": "yarn test --watchAll=false",
+    "editor.formatOnSave": true
 }
