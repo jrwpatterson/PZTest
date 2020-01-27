@@ -57,46 +57,4 @@ describe('details screen', () => {
   it('should calculate the price correctly', () => {
     expect(calculatePrice(600, 10)).toBe(6)
   })
-
-  it('should have an add to basket button that adds to basket', () => {
-    const { getByText, store } = renderReduxConnectedComponent(
-      <Route path='/detail/:id'>
-        <Detail />
-      </Route>,
-      undefined,
-      ['/detail/testid2'],
-    )
-    userEvent.click(getByText('Add to basket'))
-    expect(store.getActions()).toEqual([
-      basketAsync({
-        basket: {
-          id: 'testID',
-          lines: [
-            {
-              grams: 200,
-              name: 'test product',
-              price: 5,
-              productID: 'testProdID',
-              rowNo: 0,
-            },
-            {
-              grams: 400,
-              name: 'test product 2',
-              price: 20,
-              productID: 'testProdID2',
-              rowNo: 1,
-            },
-            {
-              grams: 0,
-              name: 'testPinkCheese',
-              productID: 'testid2',
-              rowNo: 2,
-            },
-          ],
-          total: undefined,
-        },
-        valid: false,
-      }),
-    ])
-  })
 })

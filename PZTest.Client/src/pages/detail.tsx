@@ -94,6 +94,7 @@ export default () => {
               Calculate Price
             </Typography>
             <Slider
+              id='slider'
               defaultValue={0}
               aria-labelledby='discrete-slider-small-steps'
               step={10}

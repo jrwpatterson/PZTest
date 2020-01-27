@@ -46,6 +46,7 @@ exports[`details screen should match its snapshot 1`] = `
           </p>
           <span
             class="MuiSlider-root MuiSlider-colorPrimary"
+            id="slider"
           >
             <span
               class="MuiSlider-rail"

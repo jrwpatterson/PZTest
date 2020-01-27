@@ -4,11 +4,10 @@ WORKDIR /app
 COPY . ./
 RUN yarn
 RUN yarn build
-RUN dir
 
 # stage: 2 — the production environment
-FROM node:10
-COPY — from=react-build
+FROM react-build
+RUN yarn build
 RUN yarn global add serve
-RUN serve -s build 
+ENTRYPOINT ["serve", "-s", "build"]
 EXPOSE 5000
