@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { useCheeseMenu } from '../hooks'
+import { useCheeseMenu, useBasketHook } from '../hooks'
 import { makeStyles } from '@material-ui/core/styles'
 import Slider from '@material-ui/core/Slider'
 import Typography from '@material-ui/core/Typography'
 import Button from '@material-ui/core/Button'
 import { useDispatch } from 'react-redux'
-import { basketAdd } from '../actions'
+import { Basket } from '../components'
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -30,19 +30,28 @@ const useStyles = makeStyles(() => ({
     marginTop: 30,
     backgroundColor: 'lightgreen',
   },
+  addToBasketLowerBox: {
+    display: 'flex',
+    flexDirection: 'row',
+  },
 }))
 
 interface DetailScreenProps {
   id: string
 }
 
+export const calculatePrice = (grams: number, price: number) => {
+  return Math.round((grams * price) / 10) / 100
+}
+
 export default () => {
   const { id } = useParams<DetailScreenProps>()
   const classes = useStyles()
-  const dispatch = useDispatch()
   const [grams, setGrams] = useState(0)
+  const [cost, setCost] = useState(0)
 
   const { getMenuItem } = useCheeseMenu()
+  const { addProductToBasket } = useBasketHook()
 
   const cheese = getMenuItem(id)
 
@@ -50,8 +59,16 @@ export default () => {
     return <div className={classes.root}>Invalid Product</div>
   }
 
-  const addToBasket = () => {
-    dispatch(basketAdd({ grams, id: cheese.id, name: cheese.name }))
+  const changeSectedAmount = (
+    event: React.ChangeEvent<{}>,
+    value: number | number[],
+  ) => {
+    setCost(calculatePrice(value as number, cheese.pricePerKG))
+    setGrams(value as number)
+  }
+
+  const addItemToBasket = () => {
+    addProductToBasket({ grams, id: cheese.id, name: cheese.name })
   }
 
   return (
@@ -74,20 +91,35 @@ export default () => {
           </div>
           <div className={classes.addToBasketBox}>
             <Typography id='discrete-slider-small-steps' gutterBottom>
-              Add to basket
+              Calculate Price
             </Typography>
             <Slider
-              defaultValue={0.00000005}
+              defaultValue={0}
               aria-labelledby='discrete-slider-small-steps'
               step={10}
               min={0}
               max={2000}
               valueLabelDisplay='auto'
-              onChange={(event, value) => setGrams(value as number)}
+              onChange={changeSectedAmount}
             />
-            <Button variant='contained' color='primary' onClick={addToBasket} />
+            <div className={classes.addToBasketLowerBox}>
+              <Button
+                variant='contained'
+                color='primary'
+                onClick={addItemToBasket}
+              >
+                Add to basket
+              </Button>
+
+              <Typography id='discrete-slider-small-steps' gutterBottom>
+                <span data-testid={'projected.cost'}>
+                  Calculated Price ${cost}
+                </span>
+              </Typography>
+            </div>
           </div>
         </div>
+        <Basket />
       </div>
     </div>
   )

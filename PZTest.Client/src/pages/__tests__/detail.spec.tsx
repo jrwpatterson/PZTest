@@ -40,7 +40,20 @@ describe('details screen', () => {
   })
 
   it('should show the details of the product', () => {
-    const { getByText } = renderReduxConnectedComponent(<Detail />)
+    const { getByTestId } = renderReduxConnectedComponent(
+      <Route path='/detail/:id'>
+        <Detail />
+      </Route>,
+      undefined,
+      ['/detail/testid2'],
+    )
+    expect(getByTestId('projected.cost').innerHTML).toEqual(
+      'Calculated Price $0',
+    )
+  })
+
+  it('should calculate the price correctly', () => {
+    throw new Error('not implemented')
   })
 
   it('should have a slider that calculates the estimated price for basket', () => {

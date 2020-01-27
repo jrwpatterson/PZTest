@@ -25,7 +25,14 @@ namespace PZTest
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddCors(a => a.AddPolicy("Everywhere", policy => policy.AllowAnyOrigin()));
+            services.AddCors(a => 
+                a.AddPolicy("Everywhere", policy => {
+                    policy.AllowAnyOrigin();
+                    policy.AllowAnyMethod();
+                    policy.AllowAnyHeader();
+                    }) 
+                );
+
 
             // set up IOC
             services.AddSingleton<IDataCache<CheeseModel>, CheeseInMemCacheClass>();

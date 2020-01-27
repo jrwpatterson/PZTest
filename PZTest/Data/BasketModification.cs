@@ -18,7 +18,10 @@ namespace PZTest.Data
         public BasketModel UpdateBasket(UnverifiedBasket basket)
         {
             var newBasket = new BasketModel();
-            newBasket.ID = basket.ID;
+
+            if(newBasket.ID == new Guid()){
+                newBasket.ID = Guid.NewGuid();
+            }
 
             var newLines = new List<VerifiedBasketLine>();
 

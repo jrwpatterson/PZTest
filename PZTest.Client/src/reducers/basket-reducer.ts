@@ -1,22 +1,20 @@
 import { RootActions } from '../root-actions'
 import { getType } from 'typesafe-actions'
-import { basketAsync, basketAdd, basketRemove, basketClear } from '../actions'
-import {
-  ReceivedBasket,
-  AddBasketLine,
-  ReceivedBasketLine,
-} from '../interfaces'
+import { basketAsync, basketClear } from '../actions'
+import { ReceivedBasket } from '../interfaces'
 import _ from 'lodash'
 import { Reducer } from 'redux'
 
 interface BasketReducer {
   basket: ReceivedBasket
+  validBasket: boolean
 }
 
 export const basketReducerInitState: BasketReducer = {
   basket: {
     lines: [],
   },
+  validBasket: false,
 }
 
 export const basketReducer: Reducer<BasketReducer, RootActions> = (
@@ -24,50 +22,23 @@ export const basketReducer: Reducer<BasketReducer, RootActions> = (
   action: RootActions,
 ) => {
   switch (action.type) {
-    case getType(basketAsync.success): {
-      const newState = { ...state, basket: action.payload }
+    case getType(basketAsync): {
+      const newState = {
+        ...state,
+        basket: action.payload.basket,
+        validBasket: action.payload.valid,
+      }
       return newState
     }
-    case getType(basketAdd): {
-      const newBasket = addToBasket(action.payload, state.basket)
-      return { ...state, basket: newBasket }
-    }
-    case getType(basketRemove): {
-      const newBasket = removeFromBasket(action.payload, state.basket)
-      return { ...state, basket: newBasket }
-    }
     case getType(basketClear): {
-      return { ...state, basket: { ...state.basket, total: 0, lines: [] } }
+      return {
+        ...state,
+        basket: { ...state.basket, total: 0, lines: [] },
+        validBasket: true,
+      }
     }
     default: {
       return state
     }
-  }
-}
-
-export const removeFromBasket = (
-  removeID: string,
-  basket?: ReceivedBasket,
-): ReceivedBasket => {
-  _.remove(basket?.lines ?? [], line => line.productID === removeID)
-
-  return { ...basket!, lines: basket!.lines, total: undefined }
-}
-
-export const addToBasket = (
-  newBasketLine: AddBasketLine,
-  basket?: ReceivedBasket,
-): ReceivedBasket => {
-  const basketLine: ReceivedBasketLine = {
-    rowNo: basket?.lines?.length ?? 0,
-    grams: newBasketLine.grams,
-    name: newBasketLine.name,
-    productID: newBasketLine.id,
-  }
-
-  if (!basket) {
-    return { lines: [basketLine], total: undefined }
-  } else {
-    return { ...basket, lines: [...basket.lines, basketLine], total: undefined }
   }
 }
