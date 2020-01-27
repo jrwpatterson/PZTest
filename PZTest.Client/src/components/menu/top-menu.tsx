@@ -1,4 +1,4 @@
-import {css} from '@emotion/core'
+import {css, jsx} from '@emotion/core'
 import React from 'react'
 import { Link } from 'react-router-dom'
 
@@ -14,16 +14,16 @@ export const TopMenu = (props: TopMenuProps) => {
 
     return (
         <div >
-            <nav>
+            <nav css={style}>
                 <ul>
                     <li>
                         <Link to="/">Home</Link>
                     </li>
                     <li>
-                        <Link to="/about">About</Link>
+                        <Link to="/admin">Admin</Link>
                     </li>
                     <li>
-                        <Link to="/users">Users</Link>
+                        <Link to="/detail">Detail</Link>
                     </li>
                 </ul>
             </nav>
