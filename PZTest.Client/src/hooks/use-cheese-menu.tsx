@@ -5,6 +5,7 @@ import { RootReducer } from '../root-reducer'
 import useFetch from 'use-http'
 import { cheeseReadAll, cheeseClear } from '../actions'
 import _ from 'lodash'
+import { Cheese } from '../interfaces'
 
 export const useCheeseMenu = () => {
   const [request, response] = useFetch()
@@ -17,8 +18,8 @@ export const useCheeseMenu = () => {
     getMenu()
   }, [])
 
-  const getMenu = async () => {
-    if ((!cheeses || cheeses.length === 0) && !loading) {
+  const getMenu = async (force: boolean = false) => {
+    if ((force || !cheeses || cheeses.length === 0) && !loading) {
       setLoading(true)
       const menus = await request.get('api/CheeseLoader')
       setLoading(false)
@@ -26,6 +27,16 @@ export const useCheeseMenu = () => {
         dispatch(cheeseReadAll(menus))
       }
     }
+  }
+
+  const editItem = async (cheese: Cheese) => {
+    await request.put(`api/CheeseAdmin`, cheese)
+    await getMenu(true)
+  }
+
+  const deleteItem = async (id: string) => {
+    await request.delete(`api/CheeseAdmin/${id}`)
+    await getMenu(true)
   }
 
   const getMenuItem = (id: string) => {
@@ -43,6 +54,8 @@ export const useCheeseMenu = () => {
 
   return {
     loading,
+    deleteItem,
+    editItem,
     getMenu,
     clearMenu,
     getMenuItem,

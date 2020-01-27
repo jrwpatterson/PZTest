@@ -27,7 +27,6 @@ export const useBasketHook = () => {
 
   const getBasket = async (force: boolean = false) => {
     if (!loading && (!basket || force || !validBasket)) {
-      console.log('test')
       setLoading(true)
       const newBasket = await request.post('api/Basket', {
         id: basket?.id,
@@ -45,8 +44,10 @@ export const useBasketHook = () => {
   }
 
   const addProductToBasket = (newBasketLine: AddBasketLine) => {
-    const newBasket = addToBasket(newBasketLine, basket)
-    dispatch(basketAsync({ basket: newBasket, valid: false }))
+    if (newBasketLine.grams > 0) {
+      const newBasket = addToBasket(newBasketLine, basket)
+      dispatch(basketAsync({ basket: newBasket, valid: false }))
+    }
   }
 
   const removeProductFromBasket = (id: string) => {

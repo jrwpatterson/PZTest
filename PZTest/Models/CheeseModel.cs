@@ -7,7 +7,7 @@ namespace PZTest.Models
     public class CheeseModel : CheeseModelNoID, IGeneticDataItem
     {
 
-        public Guid ID { get; }
+        public Guid ID { get; set; }
 
         public CheeseModel() { }
 
